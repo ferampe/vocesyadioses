@@ -1,0 +1,7 @@
+.indice{
+    list-style-type: none;
+}
+
+.indice > li {
+    margin-right: 10px;
+}
