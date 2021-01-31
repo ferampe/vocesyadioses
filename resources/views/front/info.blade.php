@@ -29,11 +29,9 @@
 @section('css')
 <style>
 article {
-    -webkit-columns: 3 200px;
-    -moz-columns: 3 200px;
-    columns: 3 200px;
-
-    
-  }
+    -webkit-columns: 3 300px;
+    -moz-columns: 3 300px;
+    columns: 3 300px;    
+}
 </style>
 @endsection

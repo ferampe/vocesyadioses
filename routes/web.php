@@ -43,3 +43,13 @@ Route::get('/info', function(){
 Route::get('/mapa', function(){
     return view('front/mapa');
 });
+
+Route::post('/victimas_departamento', 'DepartmentController@victims')->name('victimas_departamento');
+
+Route::get('create', function(){
+
+    factory(App\User::class, 30)->create([
+        'department_id' => 3
+    ]);
+
+});

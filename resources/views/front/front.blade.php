@@ -35,7 +35,6 @@
 <script>
     $( function() {
         $( ".draggable" ).draggable({ containment: "#containment-wrapper", scroll: false });
-
     } );
 </script>
 

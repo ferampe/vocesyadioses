@@ -5,11 +5,17 @@
 
 <div class="row mt-5">
 
-    <div class="col">
-        <h1 id="name_region" class="mt-5 nombre-region"></h1>
+    <div class="col-lg-6 d-flex mt-0 justify-content-lg-start flex-column justify-content-sm-center">
+        <h1 id="name_region" class="nombre-region"></h1>
+
+        <div class="row">
+            <div class="col" id="list">
+                <p class="align-items-center">Puede seleccionar un departamento.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="col text-right">
+    <div class="col-lg-6 d-flex justify-content-center order-first">
 
         <div class="map" >
   		
@@ -89,12 +95,24 @@
     .nombre-region{
         font-size: 5em
     }
+
+    #list{
+        font-size: 1.2em;
+        color: black;
+
+        -webkit-columns: 3 150px;
+        -moz-columns: 3 150px;
+        columns: 3 150px;    
+    }
 </style>
 @endsection
 
 @section('js')
 <script>
-    	
+
+$( function() {
+
+
     let nameRegion = document.getElementById('name_region');
     let paths = document.getElementsByClassName('elpath');
 
@@ -105,7 +123,7 @@
             resetColor()
             event.target.setAttribute("fill", "#34AD89");
             nameRegion.innerHTML = event.target.getAttribute('name');
-
+            searchDepartment(event.target.getAttribute('name'))
         })
     }
 
@@ -117,6 +135,35 @@
             paths[x].setAttribute("fill", "#82D3A7");
         }
     }
+
+
+    function searchDepartment(departamento)
+    {
+        // alert(departamento);
+
+        $.ajax({
+            url: '{{ route('victimas_departamento') }}',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                departamento: departamento
+            },
+            success: function(data){
+
+                $( "#list" ).empty();
+                $.each(data.users, function(index, item){
+                    $('#list').append('<a href="{{ url('victim')}}">'+item.name+'</a><br/>');
+                })
+                
+                console.log(data);
+
+            }
+        });
+    }
+
+} );
 
 </script>
 @endsection

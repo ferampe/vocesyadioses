@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Voces y Adioses</title>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     
@@ -74,14 +75,16 @@
 
 <div class="container">
 
-    <div class="row d-flex align-items-center mt-3">
+    <div class="row d-flex mt-3">
 
-        <div class="col-lg-4">
-            <h1 class="font-weight-bold m-0 ">voces-y-adioses</h1>
+      
+
+        <div class="col-lg-5 align-top">
+            <h1 class="font-weight-bold m-0 ">voces-y-adioses <br> <small class="subtitle">Aprendiendo a despedirnos, cuidamos la vida</small></h1>
         </div>
         
-        <div class="col-lg-6">
-            <ul class="text-uppercase indice d-flex m-0 dropdown">
+        <div class="col-lg-5 align-top">
+            <ul class="text-uppercase indice d-flex p-0 dropdown">
 
                 <li class="dropdown menu-item">
                     <span>a</span>
@@ -139,7 +142,8 @@
         <div class="col-lg-2">
             <div class="text-right menu">
                 <a href="{{ url('info') }}"> ¿que es? </a><br>
-                <a href="{{ url('mapa') }}"> mapa </a>
+                <a href="{{ url('mapa') }}"> mapa </a> <br>
+                <a href="{{ url('info') }}"> registrar </a>
             </div>
             
         </div>
