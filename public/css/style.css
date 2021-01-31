@@ -3,10 +3,22 @@
 }
 
 .indice > li {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .subtitle{
     font-size: 0.5em;
     font-weight:900;
+}
+
+#title > small { 
+    line-height: 1.5; 
+    display: block;
+}
+
+#containment-wrapper{
+    max-height: 100vh;
+    width: 100%;
+    position: relative
+    
 }

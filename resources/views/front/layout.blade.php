@@ -7,7 +7,9 @@
     <title>Voces y Adioses</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> --}}
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     
 
@@ -73,81 +75,84 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container mx-auto">
 
-    <div class="row d-flex mt-3">
+    <nav class="flex justify-between items-start mt-2 w-full">
+        
+        <div id="title" class="py-2 text-4xl">Voces y Adioses <small class="text-lg font-light">Aprendiendo a despedirnos, cuidamos la vida</small></div>
+
+        <div class="flex flex-no-shrink items-stretch h-12 ">
+          <button id="boton" class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-2">
+            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div>
+
+        <div id="menu" class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow hidden">
+          <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
+            <a href="{{ url('info') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark"> ¿que es?</a>
+            <a href="{{ url('mapa') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark">mapa</a>
+            <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark">registro</a>
+            
+          </div>
+        </div>
+    </nav>
+  
+    <ul class="flex justify-start w-full mt-5 mb-12 indice uppercase">
+
+        <li class="dropdown menu-item">
+            <span>a</span>
+            <div class="dropdown-content">
+                <a href="{{ url('/')}}">Alberto Quispe</a>
+                <a href="{{ url('/')}}">Ampar Jimenez</a>
+                <a href="{{ url('/')}}">Ana Carrillo</a>
+            </div>
+
+        </li>
+        <li class="dropdown menu-item">
+            <span>b</span>
+            <div class="dropdown-content">
+                <a href="{{ url('/')}}">Beatriz Quispe</a>
+                <a href="{{ url('/')}}">Berta Jimenez</a>
+                <a href="{{ url('/')}}">Barbara Carrillo</a>
+            </div>
+
+        </li>
+        <li class="dropdown menu-item">
+            <span>c</span>
+            <div class="dropdown-content">
+                <a href="{{ url('/')}}">Carlos Quispe</a>
+                <a href="{{ url('/')}}">Cinthia Jimenez</a>
+                <a href="{{ url('/')}}">Camila Carrillo</a>
+            </div>
+
+        </li>
+        <li>d</li>
+        <li>e</li>
+        <li>f</li>
+        <li>g</li>
+        <li>h</li>
+        <li>i</li>
+        <li>j</li>
+        <li>k</li>
+        <li>m</li>
+        <li>n</li>
+        <li>l</li>
+        <li>o</li>
+        <li>p</li>
+        <li>q</li>
+        <li>r</li>
+        <li>s</li>
+        <li>t</li>
+        <li>u</li>
+        <li>v</li>
+        <li>w</li>
+        <li>x</li>
+        <li>y</li>
+        <li>z</li>
+    </ul>
+
 
       
-
-        <div class="col-lg-5 align-top">
-            <h1 class="font-weight-bold m-0 ">voces-y-adioses <br> <small class="subtitle">Aprendiendo a despedirnos, cuidamos la vida</small></h1>
-        </div>
-        
-        <div class="col-lg-5 align-top">
-            <ul class="text-uppercase indice d-flex p-0 dropdown">
-
-                <li class="dropdown menu-item">
-                    <span>a</span>
-                    <div class="dropdown-content">
-                        <a href="{{ url('/')}}">Alberto Quispe</a>
-                        <a href="{{ url('/')}}">Ampar Jimenez</a>
-                        <a href="{{ url('/')}}">Ana Carrillo</a>
-                    </div>
-
-                </li>
-                <li class="dropdown menu-item">
-                    <span>b</span>
-                    <div class="dropdown-content">
-                        <a href="{{ url('/')}}">Beatriz Quispe</a>
-                        <a href="{{ url('/')}}">Berta Jimenez</a>
-                        <a href="{{ url('/')}}">Barbara Carrillo</a>
-                    </div>
-
-                </li>
-                <li class="dropdown menu-item">
-                    <span>c</span>
-                    <div class="dropdown-content">
-                        <a href="{{ url('/')}}">Carlos Quispe</a>
-                        <a href="{{ url('/')}}">Cinthia Jimenez</a>
-                        <a href="{{ url('/')}}">Camila Carrillo</a>
-                    </div>
-
-                </li>
-                <li>d</li>
-                <li>e</li>
-                <li>f</li>
-                <li>g</li>
-                <li>h</li>
-                <li>i</li>
-                <li>j</li>
-                <li>k</li>
-                <li>m</li>
-                <li>n</li>
-                <li>l</li>
-                <li>o</li>
-                <li>p</li>
-                <li>q</li>
-                <li>r</li>
-                <li>s</li>
-                <li>t</li>
-                <li>u</li>
-                <li>v</li>
-                <li>w</li>
-                <li>x</li>
-                <li>y</li>
-                <li>z</li>
-            </ul>
-        </div>
-
-        <div class="col-lg-2">
-            <div class="text-right menu">
-                <a href="{{ url('info') }}"> ¿que es? </a><br>
-                <a href="{{ url('mapa') }}"> mapa </a> <br>
-                <a href="{{ url('info') }}"> registrar </a>
-            </div>
-            
-        </div>
-    </div>
 
     @yield('content')
 

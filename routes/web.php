@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('victim', 'VictimController');
+// Route::resource('victim', 'VictimController');
 
 Route::post('upload', 'VictimController@upload')->name('upload');
 
@@ -45,6 +45,7 @@ Route::get('/mapa', function(){
 });
 
 Route::post('/victimas_departamento', 'DepartmentController@victims')->name('victimas_departamento');
+Route::get('/victim/{victim_id}', 'VictimController@show');
 
 Route::get('create', function(){
 
