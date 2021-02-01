@@ -13,12 +13,14 @@
             @foreach($user->files as $file)
 
                 @if($file->mimetype == "image/png" || $file->mimetype == "image/jpg" || $file->mimetype == "image/jpeg")
-                    <img src="{{asset($file->url)}}" class="draggable">
+                    <div style="position:relative;" class="draggable" data-type="imagen">
+                        <img src="{{asset($file->url)}}" style="position: relative;" class="border-2 border-black">
+                    </div>
                 @endif
 
                 @if($file->mimetype == 'audio/mpeg')
-                    <div>
-                        <audio controls>
+                    <div style="position:relative; padding:5px; background-color: black; width: 400px" class="draggable" data-type="audio" >
+                        <audio controls style="position: relative;" class="text-center">
                             <source src="{{$file->url}}" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
@@ -27,13 +29,13 @@
 
                 @if($file->mimetype == 'video/mp4')
 
-                    <figure class="figure">
-                        <video controls>
+                    <div style="padding:5px; background-color: black" class="draggable border-3 border-black" data-type="video" >
+                        <video controls style="position: relative;" >
                             <source src="{{$file->url}}" type="video/mp4">
                             
                             Your browser does not support the video tag.
                         </video>
-                    </figure>
+                    </div>
  
                 @endif
 
@@ -51,7 +53,7 @@
 
 <script>
     $( function() {
-        $( ".draggable" ).draggable({ containment: "#containment-wrapper", scroll: false });
+        $( ".draggable" ).draggable({ containment: "#containment-wrapper", scroll: true });
     } );
 </script>
 
@@ -59,75 +61,60 @@
 
     $(document).ready(function(){
         
-        $("#containment-wrapper > img").mousedown(function() {
-            $("#containment-wrapper img").not(this).css("z-index", 0);
+        $("#containment-wrapper > div").mousedown(function() {
+            $("#containment-wrapper > div").not(this).css("z-index", 0);
             $(this).css("z-index", 100);
         });
 
+  
+        $('#containment-wrapper > div').each(function() {
 
-        
-        
+            // console.log($(this).data('type'));
+            if($(this).data('type') == 'imagen' || $(this).data('type') == 'video')
+            {
+                width = Math.floor((Math.random() * 20) + 25).toString();
+                $(this).width(width + '%');
 
-        $("#containment-wrapper > img").each((index, element) => {
-            console.log(element);
+                $holder    = $(this).parent();
+                $divWidth  = $holder.width();
+                $divHeight = $holder.height();
 
-
-            width = Math.floor((Math.random() * 50) + 25).toString();
-            $(element).width(width + '%');
-
-            var docHeight = $("#containment-wrapper").height(),
-                docWidth = $("#containment-wrapper").width(),
-                $div = $(element),
-                divWidth = $div.width(),
-                divHeight = $div.height(),
-                heightMax = docHeight - divHeight,
-                    widthMax = docWidth - divWidth;
-
-          
-
-                console.log(heightMax);
-            
-                $div.css({
-                    left: Math.floor( Math.random() * widthMax ),
-                    top: Math.floor( Math.random() * heightMax )
-                });
-
+                $(this).css({
+                    'left': Math.floor( Math.random() * Number( $divWidth ) ),
+                    'top' : Math.floor( Math.random() * 10 ) + 25
+                });       
+            }
+             
 
         })
 
 
 
+
+        // $("#containment-wrapper > img").each((index, element) => {
+        //     console.log(element);
+
+
+        //     width = Math.floor((Math.random() * 50) + 25).toString();
+        //     $(element).width(width + '%');
+
+        //     var docHeight = $("#containment-wrapper").height(),
+        //         docWidth = $("#containment-wrapper").width(),
+        //         $div = $(element),
+        //         divWidth = $div.width(),
+        //         divHeight = $div.height(),
+        //         heightMax = docHeight - divHeight,
+        //             widthMax = docWidth - divWidth;
+
+        //         console.log(heightMax);
+            
+        //         $div.css({
+        //             left: Math.floor( Math.random() * widthMax ),
+        //             top: Math.floor( Math.random() * heightMax )
+        //         });
+        // })
     });
 
-
-
-    // window.onLoad = Prep();
-            
-    // function Prep(){
-    //     window_Height = $("#containment-wrapper").height();
-    //     window_Width = $("#containment-wrapper").width();
-        
-    //     image_Element = document.getElementById("image");
-    //     image_Height = image_Element.clientHeight;
-    //     image_Width = image_Element.clientWidth;
-        
-    //     availSpace_V = window_Height - image_Height;
-    //     availSpace_H = window_Width - image_Width;
-        
-    //     var randNum_V = Math.round(Math.random() * availSpace_V);
-    //     var randNum_H = Math.round(Math.random() * availSpace_H);
-        
-    //     image_Element.style.top = randNum_V + "px";
-    //     image_Element.style.left = randNum_H + "px";
-    // }
-    
-    // function moveImage(){
-    //     var randNum_V = Math.round(Math.random() * availSpace_V);
-    //     var randNum_H = Math.round(Math.random() * availSpace_H);
-        
-    //     image_Element.style.top = randNum_V + "px";
-    //     image_Element.style.left = randNum_H + "px";
-    // }
 
 </script>
 @endsection

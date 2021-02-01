@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('victim', 'VictimController');
 
 Route::post('upload', 'VictimController@upload')->name('upload');
-
+    
 Route::post('remove', 'VictimController@remove')->name('remove');
 
 Route::post('save_messages', 'MessageController@save')->name('save_messages');
@@ -33,7 +33,9 @@ Route::post('file_store', 'FileController@store')->name('file_store');
 Route::get('file_delete/{fileId}', 'FileController@delete')->name('file_delete');
 
 Route::get('/', function(){
-    return view('front/front');
+    $user = \App\User::latest()->first();
+
+    return view('front/front', compact('user'));
 });
 
 Route::get('/info', function(){

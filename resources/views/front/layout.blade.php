@@ -96,63 +96,15 @@
           </div>
         </div>
     </nav>
-  
-    <ul class="flex justify-start w-full mt-5 mb-12 indice uppercase">
 
-        <li class="dropdown menu-item">
-            <span>a</span>
-            <div class="dropdown-content">
-                <a href="{{ url('/')}}">Alberto Quispe</a>
-                <a href="{{ url('/')}}">Ampar Jimenez</a>
-                <a href="{{ url('/')}}">Ana Carrillo</a>
-            </div>
-
-        </li>
-        <li class="dropdown menu-item">
-            <span>b</span>
-            <div class="dropdown-content">
-                <a href="{{ url('/')}}">Beatriz Quispe</a>
-                <a href="{{ url('/')}}">Berta Jimenez</a>
-                <a href="{{ url('/')}}">Barbara Carrillo</a>
-            </div>
-
-        </li>
-        <li class="dropdown menu-item">
-            <span>c</span>
-            <div class="dropdown-content">
-                <a href="{{ url('/')}}">Carlos Quispe</a>
-                <a href="{{ url('/')}}">Cinthia Jimenez</a>
-                <a href="{{ url('/')}}">Camila Carrillo</a>
-            </div>
-
-        </li>
-        <li>d</li>
-        <li>e</li>
-        <li>f</li>
-        <li>g</li>
-        <li>h</li>
-        <li>i</li>
-        <li>j</li>
-        <li>k</li>
-        <li>m</li>
-        <li>n</li>
-        <li>l</li>
-        <li>o</li>
-        <li>p</li>
-        <li>q</li>
-        <li>r</li>
-        <li>s</li>
-        <li>t</li>
-        <li>u</li>
-        <li>v</li>
-        <li>w</li>
-        <li>x</li>
-        <li>y</li>
-        <li>z</li>
+    @php
+        $menu = new App\Helper\IndiceHelper;
+        $items = $menu->build();
+    @endphp
+    <ul class="flex justify-start w-full mt-5 mb-5 indice uppercase">
+        {!! $items !!}
     </ul>
 
-
-      
 
     @yield('content')
 
@@ -160,6 +112,18 @@
     
 
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+    const boton = document.querySelector('#boton');
+    const menu = document.querySelector('#menu');
+
+    boton.addEventListener('click', () => {
+        
+        menu.classList.toggle('hidden')
+
+    });
+
+</script>
 
 
 <script>
