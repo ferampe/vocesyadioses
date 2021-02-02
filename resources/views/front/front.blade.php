@@ -7,30 +7,25 @@
     <div class="text-4xl">{{ $user->name }}</div>
 
     <div id="containment-wrapper">
+
+        @if($user->messages)
+            @foreach($user->messages as $message)
+                @if($message->content != "")
+                    <div style="position:absolute; width: 150px" class="draggable border-3 border-black">
+                        <img src="{{asset('imagenes/texto.png')}}" style="position: relative;"  class="border-2 border-black">
+                    </div>
+                @endif
+            @endforeach
+        @endif
         
         @if($user->files)
 
             @foreach($user->files as $file)
 
-                @if($file->mimetype == "image/png" || $file->mimetype == "image/jpg" || $file->mimetype == "image/jpeg")
-                    <div style="position:relative;" class="draggable" data-type="imagen">
-                        <img src="{{asset($file->url)}}" style="position: relative;" class="border-2 border-black">
-                    </div>
-                @endif
+            @if($file->mimetype == 'video/mp4')
 
-                @if($file->mimetype == 'audio/mpeg')
-                    <div style="position:relative; padding:5px; background-color: black; width: 400px" class="draggable" data-type="audio" >
-                        <audio controls style="position: relative;" class="text-center">
-                            <source src="{{$file->url}}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                @endif
-
-                @if($file->mimetype == 'video/mp4')
-
-                    <div style="padding:5px; background-color: black" class="draggable border-3 border-black" data-type="video" >
-                        <video controls style="position: relative;" >
+                    <div style="position:absolute; padding:5px; background-color: black" class="draggable border-3 border-black" data-type="video" >
+                        <video controls >
                             <source src="{{$file->url}}" type="video/mp4">
                             
                             Your browser does not support the video tag.
@@ -38,6 +33,23 @@
                     </div>
  
                 @endif
+
+                @if($file->mimetype == "image/png" || $file->mimetype == "image/jpg" || $file->mimetype == "image/jpeg")
+                    <div style="position:absolute;" class="draggable" data-type="imagen">
+                        <img src="{{asset($file->url)}}" style="position: relative;" class="border-2 border-black">
+                    </div>
+                @endif
+
+                @if($file->mimetype == 'audio/mpeg')
+                    <div style="position:absolute; padding:5px; background-color: black; width: 400px" class="draggable" data-type="audio" >
+                        <audio controls style="position: relative;" class="text-center">
+                            <source src="{{$file->url}}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                @endif
+
+                
 
             @endforeach
         @endif
@@ -60,6 +72,12 @@
 <script>
 
     $(document).ready(function(){
+
+
+        const r = Math.random()*(100-10) + 10;
+
+        console.log('r', r);
+
         
         $("#containment-wrapper > div").mousedown(function() {
             $("#containment-wrapper > div").not(this).css("z-index", 0);
@@ -69,21 +87,21 @@
   
         $('#containment-wrapper > div').each(function() {
 
-            // console.log($(this).data('type'));
             if($(this).data('type') == 'imagen' || $(this).data('type') == 'video')
             {
                 width = Math.floor((Math.random() * 20) + 25).toString();
                 $(this).width(width + '%');
-
-                $holder    = $(this).parent();
-                $divWidth  = $holder.width();
-                $divHeight = $holder.height();
-
-                $(this).css({
-                    'left': Math.floor( Math.random() * Number( $divWidth ) ),
-                    'top' : Math.floor( Math.random() * 10 ) + 25
-                });       
             }
+
+            $holder    = $(this).parent();
+            $divWidth  = $holder.width();
+            $divHeight = $holder.height();
+
+            $(this).css({
+                // 'left': Math.floor( Math.random() * Number( $divWidth ) ),
+                'left' : Math.floor(Math.random()*(500-10) + 10),
+                'top' : Math.floor( Math.random()*(20-10) + 10)
+            });    
              
 
         })
