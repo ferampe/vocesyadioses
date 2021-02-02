@@ -53,86 +53,118 @@
 
             @endforeach
         @endif
+
+        {{-- <div class="draggable">hola</div> --}}
     </div>
 </div>
 
 
 @endsection
 
+
+
 @section('js')
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script>
-    $( function() {
-        $( ".draggable" ).draggable({ containment: "#containment-wrapper", scroll: true });
-    } );
-</script>
-
-<script>
-
-    $(document).ready(function(){
+{{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --}}
 
 
-        const r = Math.random()*(100-10) + 10;
 
-        console.log('r', r);
+    {{-- // $( function() {
+    //     // $( ".draggable" ).draggable({ containment: "#containment-wrapper"});
+    // } ); --}}
 
-        
-        $("#containment-wrapper > div").mousedown(function() {
-            $("#containment-wrapper > div").not(this).css("z-index", 0);
-            $(this).css("z-index", 100);
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+
+    <script>
+    
+    </script>
+
+
+
+    <script>
+        $( document ).ready(function() {
+
+interact('.draggable').draggable({
+    // enable inertial throwing
+    inertia: true,
+    // keep the element within the area of it's parent
+    restrict: {
+      restriction: "parent",
+      endOnly: true,
+      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+    },
+    // enable autoScroll
+    autoScroll: true,
+
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+    // call this function on every dragend event
+    onend: function (event) {
+      var textEl = event.target.querySelector('p');
+
+      textEl && (textEl.textContent =
+        'moved a distance of '
+        + (Math.sqrt(event.dx * event.dx +
+                     event.dy * event.dy)|0) + 'px');
+    }
+  });
+
+  function dragMoveListener (event) {
+    var target = event.target,
+        // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    // translate the element
+    target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)';
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  }
+  });
+
+
+
+
+        $(document).ready(function(){
+
+
+            const r = Math.random()*(100-10) + 10;
+
+            console.log('r', r);
+
+            
+            $("#containment-wrapper > div").mousedown(function() {
+                $("#containment-wrapper > div").not(this).css("z-index", 0);
+                $(this).css("z-index", 100);
+            });
+
+    
+            $('#containment-wrapper > div').each(function() {
+
+                if($(this).data('type') == 'imagen' || $(this).data('type') == 'video')
+                {
+                    width = Math.floor((Math.random() * 20) + 25).toString();
+                    $(this).width(width + '%');
+                }
+
+                $holder    = $(this).parent();
+                $divWidth  = $holder.width();
+                $divHeight = $holder.height();
+
+                $(this).css({
+                    // 'left': Math.floor( Math.random() * Number( $divWidth ) ),
+                    'left' : Math.floor(Math.random()*(500-10) + 10),
+                    'top' : Math.floor( Math.random()*(20-10) + 10)
+                });    
+                
+
+            })
         });
 
-  
-        $('#containment-wrapper > div').each(function() {
 
-            if($(this).data('type') == 'imagen' || $(this).data('type') == 'video')
-            {
-                width = Math.floor((Math.random() * 20) + 25).toString();
-                $(this).width(width + '%');
-            }
-
-            $holder    = $(this).parent();
-            $divWidth  = $holder.width();
-            $divHeight = $holder.height();
-
-            $(this).css({
-                // 'left': Math.floor( Math.random() * Number( $divWidth ) ),
-                'left' : Math.floor(Math.random()*(500-10) + 10),
-                'top' : Math.floor( Math.random()*(20-10) + 10)
-            });    
-             
-
-        })
-
-
-
-
-        // $("#containment-wrapper > img").each((index, element) => {
-        //     console.log(element);
-
-
-        //     width = Math.floor((Math.random() * 50) + 25).toString();
-        //     $(element).width(width + '%');
-
-        //     var docHeight = $("#containment-wrapper").height(),
-        //         docWidth = $("#containment-wrapper").width(),
-        //         $div = $(element),
-        //         divWidth = $div.width(),
-        //         divHeight = $div.height(),
-        //         heightMax = docHeight - divHeight,
-        //             widthMax = docWidth - divWidth;
-
-        //         console.log(heightMax);
-            
-        //         $div.css({
-        //             left: Math.floor( Math.random() * widthMax ),
-        //             top: Math.floor( Math.random() * heightMax )
-        //         });
-        // })
-    });
-
-
-</script>
+    </script>
 @endsection
