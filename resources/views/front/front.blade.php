@@ -3,8 +3,9 @@
 
 @section('content')
 
+@if($user)
 <div>
-    <div class="text-4xl">{{ $user->name }}</div>
+    <div class="text-4xl">{{ $user->name_victim }} {{ $user->last_name_victim}}</div>
 
     <div id="containment-wrapper">
 
@@ -57,7 +58,7 @@
         {{-- <div class="draggable">hola</div> --}}
     </div>
 </div>
-
+@endif
 
 @endsection
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Faker\Factory as Faker;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,9 +51,27 @@ Route::post('/victimas_departamento', 'DepartmentController@victims')->name('vic
 Route::get('/victim/{victim_id}', 'VictimController@show');
 
 Route::get('create', function(){
+    // $faker = Faker::create();
+    // factory(App\User::class, 30)->create([
+    //     'department_id' => 3,
+    //     'name_victim' => $faker->name,
+    //     'last_name_victim' => $faker->last_name,
+    // ]);
 
-    factory(App\User::class, 30)->create([
-        'department_id' => 3
-    ]);
+
+    $faker = Faker::create();
+    	foreach (range(1,10) as $index) {
+	        \DB::table('users')->insert([
+	            'name' => $faker->name,
+                'email' => $faker->email,
+                'department_id' => 3,
+                'name_victim' => $faker->firstName,
+                'last_name_victim' => $faker->lastName,
+	            'password' => bcrypt('secret'),
+	        ]);
+    }
+    
+
+
 
 });

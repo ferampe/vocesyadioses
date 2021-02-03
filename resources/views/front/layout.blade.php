@@ -79,7 +79,7 @@
 
     <nav class="flex justify-between items-start mt-2 w-full">
         
-        <div id="title" class="py-2 text-4xl">Voces y Adioses <small class="text-lg font-light">Aprendiendo a despedirnos, cuidamos la vida</small></div>
+        <div id="title" class="py-2 text-4xl">Voces y Adioses <small class="text-lg font-light">Ensayando despedidas en tiempos de COVID</small></div>
 
         <div class="flex flex-no-shrink items-stretch h-12 ">
           <button id="boton" class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-2">
@@ -89,7 +89,7 @@
 
         <div id="menu" class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow hidden">
           <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
-            <a href="{{ url('info') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark"> ¿que es?</a>
+            <a href="{{ url('info') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark"> ¿qué es?</a>
             <a href="{{ url('mapa') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark">mapa</a>
             <a href="{{ route('register') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark">participar</a>
             

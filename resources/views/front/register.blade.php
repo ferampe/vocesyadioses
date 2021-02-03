@@ -13,15 +13,15 @@
                 <div class="py-4 px-8">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="mb-4">
-                                <label class="block text-grey-darker text-sm font-bold mb-2" for="first_name">Nombre</label>
-                                <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="name" name="name" type="text" value="{{ old('name') }}" placeholder="Nombre completo">
+                        <div class="mb-4 w-full">
+                                <label class="block text-grey-darker text-sm  mb-1" for="first_name">Nombre de usuario</label>
+                                <input class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" id="name" name="name" type="text" value="{{ old('name') }}" placeholder="Nombre completo">
                             
                         </div>
 
-                        <div class="mb-4">
-                                <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email</label>
-                                <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" name="email" type="email" value="{{ old('email') }}" placeholder="Su email">
+                        <div class="mb-4 w-full">
+                                <label class="block text-grey-darker text-sm  mb-1" for="email">Email</label>
+                                <input class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" id="email" name="email" type="email" value="{{ old('email') }}" placeholder="Su email">
 
                                 @error('email')
                                     <span class="text-red-500 text-sm">
@@ -30,9 +30,45 @@
                                 @enderror
                         </div>
 
+                        <div class="flex justify-between ">
+                            <div class="mb-4">
+                                <label class="block text-grey-darker text-sm  mb-1" for="password">Password</label>
+                                <input id="password" type="password" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" name="password" required autocomplete="new-password">
+                                
+                                @error('password')
+                                    <span class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+    
+                            <div class="mb-4">
+                                <label for="password-confirm" class="block text-grey-darker text-sm  mb-1">{{ __('Confirm Password') }}</label>
+                                <input id="password-confirm" type="password" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" name="password_confirmation" required autocomplete="new-password">
+    
+                            </div>
+                        </div>
+                        
+
+                        <hr class="mb-4">
+
+                        <div class="text-lg mb-4">Datos de la persona a quien dedicamos la despedida</div>
+
                         <div class="mb-4">
-                                <label class="block text-grey-darker text-sm font-bold mb-2" for="department_id">Departamento</label>
-                                <select name="department_id" id="department_id" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker">
+                            <label class="block text-grey-darker text-sm  mb-1" for="name_victim">Nombre</label>
+                            <input class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" id="name_victim" name="name_victim" type="text" value="{{ old('name_victim') }}" placeholder="Nombres">
+                        
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-grey-darker text-sm  mb-1" for="last_name_victim">Apellidos</label>
+                            <input class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" id="last_name_victim" name="last_name_victim" type="text" value="{{ old('last_name_victim') }}" placeholder="Apellidos">
+                        
+                        </div>
+
+                        <div class="mb-4">
+                                <label class="block text-grey-darker text-sm  mb-1" for="department_id">Departamento de la persona fallecida</label>
+                                <select name="department_id" id="department_id" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker">
                                     <option value="">Seleccione un departamento</option>
 
                                     @foreach($departments as $department)
@@ -48,25 +84,7 @@
                                 @endif
                         </div>
 
-                        <div class="mb-4">
-                            <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
-                            {{-- <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="password" type="password" placeholder="Your secure password">
-                            <p class="text-grey text-xs mt-1">At least 6 characters</p> --}}
-
-                            <input id="password" type="password" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="password" required autocomplete="new-password">
-                            
-                            @error('password')
-                                <span class="text-red-500 text-sm">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="password-confirm" class="block text-grey-darker text-sm font-bold mb-2">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="password_confirmation" required autocomplete="new-password">
-
-                        </div>
+                        
 
                         <div class="mb-4">
                             {{-- hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full --}}

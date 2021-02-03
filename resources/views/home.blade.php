@@ -25,18 +25,36 @@
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
-            <form action="{{ route('file_store' )}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('file_store' )}}" method="post" enctype="multipart/form-data" id="form-file">
                 @csrf
             <div class="card">
                 <div class="card-header">Agregar Archivos de Audio o video</div>
 
                 <div class="card-body">
+
+                    <div class="alert alert-info" role="alert">
+                        <p>Solo agregar: </p>
+                        <ul>
+                            <li>3 imágenes </li>
+                            <li>1 video</li>
+                            <li>1 audio</li>
+                        </ul>
+                        
+
+
+
+
+                    </div>
+
                     <input type="file" name="file" accept="file_extension|audio/*|video/*|image/*|media_type">
                     @error('file')
                     <small class="text-danger">{{ $message}}</small>
                     @enderror
                     <br>
-                    <button class="btn btn-primary mt-2">Agregar</button>
+                    <button class="btn btn-primary mt-2" id="button-file">
+                        <span class="spinner-border spinner-border-sm" id="loading-file" role="status" aria-hidden="true"></span>
+                        Subir
+                    </button>
                     <hr>
 
                     <div class="mt-5">
@@ -47,7 +65,6 @@
                                     <img src="{{$file->thumbnail}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                                     <figcaption class="figure-caption text-center"><a href="{{ route('file_delete', [$file->id])}}">Eliminar</a></figcaption>
                                 </figure>
-                                {{-- <img src="{{$file->url}}" class="img-thumbnail" width="100px"> --}}
 
                             @endif
 
@@ -119,6 +136,9 @@
 
                 <div class="card-footer">
                     <button class="btn btn-primary">Actualizar</button>
+
+                    
+
                 </div>
             
             </div>
@@ -127,3 +147,25 @@
     </div>
 </div>
 @endsection
+
+
+@push('js')
+
+<script>
+
+    $(document).ready(function(){
+        $('#loading-file').hide();
+
+        $('#form-file').submit(function(){
+            // alert('submit')
+            $('#loading-file').show();
+            $('#button-file').disable()
+        })
+
+       
+        
+    });
+
+
+</script>
+@endpush

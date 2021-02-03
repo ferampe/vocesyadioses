@@ -51,11 +51,11 @@ class CreateDepartmentsTable extends Migration
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
-            [
-                'nombre' => "Callao",
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
+            // [
+            //     'nombre' => "Callao",
+            //     'created_at' => Carbon::now(),
+            //     'updated_at' => Carbon::now()
+            // ],
             [
                 'nombre' => "Cusco",
                 'created_at' => Carbon::now(),
@@ -92,7 +92,7 @@ class CreateDepartmentsTable extends Migration
                 'updated_at' => Carbon::now()
             ],
             [
-                'nombre' => "Lima",
+                'nombre' => "Lima y Callao",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

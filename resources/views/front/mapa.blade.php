@@ -5,7 +5,7 @@
 
 <div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
 
-    <div class="map md:mx-auto sm:mx-auto">
+    <div class="map mx-auto md:mx-auto sm:mx-auto">
     
         <svg style="height: calc(100vh  - 150px)" baseprofile="tiny" fill="#82D3A7" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.2" viewbox="0 0 1000 1472" xmlns="http://www.w3.org/2000/svg">
         
@@ -148,10 +148,10 @@ $( function() {
                 $.each(data.users, function(index, item){
                     console.log(item);
 
-                    $('#list').append('<a href="{{ url('victim')}}/ '+item.id+'"">'+item.name+'</a><br/>');
+                    $('#list').append('<a href="{{ url('victim')}}/ '+item.id+'"">'+item.last_name_victim+ " " +item.name_victim+'</a><br/>');
                 })
                 
-                console.log(data);
+                // console.log(data);
 
             }
         });

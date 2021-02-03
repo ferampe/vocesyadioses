@@ -13,7 +13,7 @@ class IndiceHelper{
         $html = null;
         foreach($letters as $letter)
         {
-            $users = \App\User::where('name', 'LIKE', $letter.'%')->orderBy('name', 'ASC')->get();
+            $users = \App\User::where('last_name_victim', 'LIKE', $letter.'%')->orderBy('last_name_victim', 'ASC')->get();
 
             if($users)
             {                
