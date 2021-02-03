@@ -79,7 +79,7 @@
 
     <nav class="flex justify-between items-start mt-2 w-full">
         
-        <div id="title" class="py-2 text-4xl">Voces y Adioses <small class="text-lg font-light">Ensayando despedidas en tiempos de COVID</small></div>
+        <div id="title" class="py-2 text-4xl"> <a href="{{ url("/") }}"> Voces y Adioses <small class="text-lg font-light block">Ensayando despedidas en tiempos de COVID</small></a></div>
 
         <div class="flex flex-no-shrink items-stretch h-12 ">
           <button id="boton" class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-2">
