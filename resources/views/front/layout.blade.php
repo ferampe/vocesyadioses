@@ -89,12 +89,10 @@
 
         <div id="menu" class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow hidden">
           <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
-            <a href="{{ url('info') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark"> ¿qué es?</a>
-            <a href="{{ url('mapa') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark">mapa</a>
-            <a href="{{ route('register') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-grey-dark">participar</a>
-            
-
-            
+            <a href="{{ url('info') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('info')) ? 'underline' : '' }}">¿qué es?</a>
+            <a href="{{ url('mapa') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('mapa')) ? 'underline' : '' }}">mapa</a>
+            <a href="{{ route('register') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('register')) ? 'underline' : '' }}">participar</a>
+            <a href="{{ route('login') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('login')) ? 'underline' : '' }}">login</a>
 
           </div>
         </div>
@@ -104,10 +102,10 @@
         $menu = new App\Helper\IndiceHelper;
         $items = $menu->build();
     @endphp
-    <ul class="flex justify-start w-full mt-5 mb-5 indice uppercase">
+
+    <ul class="flex w-full mt-5 mb-5 uppercase">
         {!! $items !!}
     </ul>
-
 
     @yield('content')
 

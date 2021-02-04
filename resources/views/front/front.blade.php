@@ -7,14 +7,40 @@
 <div>
     <div class="text-4xl">{{ $user->name_victim }} {{ $user->last_name_victim}}</div>
 
+
+    @if($user->messages)
+            @foreach($user->messages as $message)
+                @if($message->content != "")
+                    
+
+                    <div id="message-{{$message->id}}" class="modal">
+                        <div class="mb-10">
+                            @php
+                            $lines = explode("\n", $message->content); // or use PHP PHP_EOL constant
+                            if ( !empty($lines) ) {
+                                
+                                foreach ( $lines as $line ) {
+                                    echo trim( $line ) .'<br>';
+                                }
+                            }
+                            @endphp
+                        </div>
+                        <a href="#" rel="modal:close" class="mt-10 border p-2 bg-black text-white">Cerrar</a>
+                    </div>
+                @endif
+            @endforeach
+        @endif
+
     <div id="containment-wrapper">
 
         @if($user->messages)
             @foreach($user->messages as $message)
                 @if($message->content != "")
-                    <div style="position:absolute; width: 150px" class="draggable border-3 border-black">
-                        <img src="{{asset('imagenes/texto.png')}}" style="position: relative;"  class="border-2 border-black">
+                    <div style="position:absolute; width: 100px" class="draggable">
+                        <a href="#message-{{$message->id}}" rel="modal:open"><img src="{{asset('imagenes/texto2.png')}}" style="position: relative;" ></a>
                     </div>
+
+                    
                 @endif
             @endforeach
         @endif
@@ -62,6 +88,15 @@
 
 @endsection
 
+@section('css')
+
+<style>
+    .blocker{
+        z-index: 100 !important;
+    }
+</style>
+@endsection
+
 
 
 @section('js')
@@ -76,10 +111,9 @@
 
     <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
 
-    <script>
-    
-    </script>
-
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 
     <script>
@@ -132,15 +166,10 @@
 
         $(document).ready(function(){
 
-
-            const r = Math.random()*(100-10) + 10;
-
-            console.log('r', r);
-
             
             $("#containment-wrapper > div").mousedown(function() {
                 $("#containment-wrapper > div").not(this).css("z-index", 0);
-                $(this).css("z-index", 100);
+                $(this).css("z-index", 4);
             });
 
     

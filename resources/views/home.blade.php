@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            
             <div class="card">
                 <div class="card-header">Información de Usuario</div>
 
@@ -17,9 +18,10 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="" class="btn btn-primary">Editar</a>
+                    <a href="{{ url('register/edit/' . Auth::user()->id ) }}" class="btn btn-primary">Editar</a>
                 </div>
             </div>
+
         </div>
     </div>
 

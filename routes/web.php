@@ -20,6 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('register/edit/{user_id}', 'Auth\RegisterController@edit');
+
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::resource('victim', 'VictimController');
@@ -32,6 +37,7 @@ Route::post('save_messages', 'MessageController@save')->name('save_messages');
 
 Route::post('file_store', 'FileController@store')->name('file_store');
 Route::get('file_delete/{fileId}', 'FileController@delete')->name('file_delete');
+
 
 Route::get('/', function(){
     $user = \App\User::latest()->first();

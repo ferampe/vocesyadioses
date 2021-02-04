@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Http\Request;
+
+
 use App\Department;
 use App\Message;
 
@@ -41,7 +44,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
     /**
@@ -60,6 +63,19 @@ class RegisterController extends Controller
             'department_id' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    public function edit(Request $request, $user_id)
+    {
+        
+        $user = User::find($user_id);
+        $departments = Department::all();
+
+        // dd($user);
+
+        return view('edit', compact('user', 'departments'));
+
+
     }
 
     public function showRegistrationForm()

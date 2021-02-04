@@ -6,9 +6,9 @@ body{
     list-style-type: none;
 }
 
-.indice > li {
+/* .indice > li {
     margin-right: 20px;
-}
+} */
 
 .subtitle{
     font-size: 0.5em;
