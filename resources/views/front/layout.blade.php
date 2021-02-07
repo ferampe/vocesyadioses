@@ -41,7 +41,7 @@
         position: absolute;
         background-color: #E6E3E1;
         min-width: 160px;
-        height: 300px;
+        max-height: 300px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
         overflow: auto;
