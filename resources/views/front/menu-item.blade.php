@@ -1,4 +1,4 @@
-<li class="dropdown menu-item mr-2.5 lg:mr-5 xl:mr-8">
+<li class="dropdown menu-item mr-3 lg:mr-5 xl:mr-8">
     <span>{{ $letter }}</span>
     <div class="dropdown-content">
         @foreach($users as $user)

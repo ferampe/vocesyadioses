@@ -9,27 +9,27 @@
 
 
     @if($user->messages)
-            @foreach($user->messages as $message)
-                @if($message->content != "")
-                    
+        @foreach($user->messages as $message)
+            @if($message->content != "")
+                
 
-                    <div id="message-{{$message->id}}" class="modal">
-                        <div class="mb-10">
-                            @php
-                            $lines = explode("\n", $message->content); // or use PHP PHP_EOL constant
-                            if ( !empty($lines) ) {
-                                
-                                foreach ( $lines as $line ) {
-                                    echo trim( $line ) .'<br>';
-                                }
+                <div id="message-{{$message->id}}" class="modal">
+                    <div class="mb-10">
+                        @php
+                        $lines = explode("\n", $message->content); // or use PHP PHP_EOL constant
+                        if ( !empty($lines) ) {
+                            
+                            foreach ( $lines as $line ) {
+                                echo trim( $line ) .'<br>';
                             }
-                            @endphp
-                        </div>
-                        <a href="#" rel="modal:close" class="mt-10 border p-2 bg-black text-white">Cerrar</a>
+                        }
+                        @endphp
                     </div>
-                @endif
-            @endforeach
-        @endif
+                    <a href="#" rel="modal:close" class="mt-10 border p-2 bg-black text-white">Cerrar</a>
+                </div>
+            @endif
+        @endforeach
+    @endif
 
     <div id="containment-wrapper">
 

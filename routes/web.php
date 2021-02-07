@@ -20,8 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 Route::group(['middleware' => ['auth']], function() {
     Route::get('register/edit/{user_id}', 'Auth\RegisterController@edit');
+    Route::put('register/{user_id}', 'Auth\RegisterController@update')->name('register.user');
+
 
 });
 
@@ -66,11 +70,11 @@ Route::get('create', function(){
 
 
     $faker = Faker::create();
-    	foreach (range(1,10) as $index) {
+    	foreach (range(1,50) as $index) {
 	        \DB::table('users')->insert([
 	            'name' => $faker->name,
                 'email' => $faker->email,
-                'department_id' => 3,
+                'department_id' => 4,
                 'name_victim' => $faker->firstName,
                 'last_name_victim' => $faker->lastName,
 	            'password' => bcrypt('secret'),

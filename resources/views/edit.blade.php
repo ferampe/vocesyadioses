@@ -9,10 +9,12 @@
     <div class="w-full bg-grey-lightest" >
       <div class="container mx-auto py-8">
         <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
-              <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Registro</div>
+              <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Editar Información</div>
                 <div class="py-4 px-8">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register.user', [$user->id]) }}">
                         @csrf
+                        @method('PUT')
+                        <input type="hidden" name="id" value="{{ $user->id }}">
                         <div class="mb-4 w-full">
                                 <label class="block text-grey-darker text-sm  mb-1" for="first_name">Nombre de usuario</label>
                                 <input class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" id="name" name="name" type="text" value="{{ old('name', $user->name) }}" placeholder="Nombre completo">
@@ -30,10 +32,10 @@
                                 @enderror
                         </div>
 
-                        {{-- <div class="flex justify-between ">
+                        <div class="flex justify-between ">
                             <div class="mb-4">
                                 <label class="block text-grey-darker text-sm  mb-1" for="password">Password</label>
-                                <input id="password" type="password" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" name="password"  autocomplete="new-password">
                                 
                                 @error('password')
                                     <span class="text-red-500 text-sm">
@@ -44,10 +46,10 @@
     
                             <div class="mb-4">
                                 <label for="password-confirm" class="block text-grey-darker text-sm  mb-1">{{ __('Confirm Password') }}</label>
-                                <input id="password-confirm" type="password" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker" name="password_confirmation"  autocomplete="new-password">
     
                             </div>
-                        </div> --}}
+                        </div>
                         
 
                         <hr class="mb-4">
@@ -89,7 +91,7 @@
                         <div class="mb-4">
                             {{-- hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full --}}
                             <button class="bg-black text-white p-3" type="submit">
-                                Registrar
+                                Actualizar
                             </button>
                         </div>
 

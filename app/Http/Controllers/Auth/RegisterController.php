@@ -78,6 +78,47 @@ class RegisterController extends Controller
 
     }
 
+    public function update(Request $request, $user_id)
+    {
+
+        // dd($request->all());
+
+        $validator =  Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'name_victim' => ['required', 'string', 'max:255'],
+            'last_name_victim' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $request->id],
+            'department_id' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();;
+        }
+
+        
+
+        $user = User::find($user_id);
+        $user->name = $request->name;
+        $user->department_id = $request->department_id;
+        $user->name_victim = $request->name_victim;
+        $user->last_name_victim = $request->last_name_victim;
+
+        if($request->password)
+        {
+            $user->password = Hash::make($request->password);
+        }
+        
+
+        $user->save();
+
+        return redirect('register/edit/'.$user->id);
+
+
+    }
+
     public function showRegistrationForm()
     {
         $departments = Department::all();
