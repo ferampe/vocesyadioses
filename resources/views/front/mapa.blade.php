@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
+<div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 mt-8">
 
     <div class="map mx-auto md:mx-auto sm:mx-auto">
     

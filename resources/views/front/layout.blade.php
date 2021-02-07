@@ -8,6 +8,10 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,800;1,700&display=swap" rel="stylesheet">
+
+
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
@@ -81,7 +85,7 @@
 
     <nav class="flex justify-between items-start mt-2 w-full">
         
-        <div id="title" class="py-2 text-4xl"> <a href="{{ url("/") }}"> Voces y Adioses <small class="text-lg font-light block">Ensayando despedidas en tiempos de COVID</small></a></div>
+        <div id="title" class="py-2 text-4xl font-semibold"> <a href="{{ url("/") }}"> voces-y-adioses <small class="text-lg font-light block">Ensayando despedidas en tiempos de COVID</small></a></div>
 
         <div class="flex flex-no-shrink items-stretch h-12 ">
           <button id="boton" class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-2">
