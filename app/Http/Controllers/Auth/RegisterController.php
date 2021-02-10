@@ -114,7 +114,7 @@ class RegisterController extends Controller
 
         $user->save();
 
-        return redirect('register/edit/'.$user->id);
+        return redirect('register/edit/'.$user->id)->with('success', 'datos actualizados');   ;
 
 
     }
