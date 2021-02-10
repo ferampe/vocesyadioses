@@ -31,8 +31,6 @@ class FileController extends Controller
             $pathNormal = storage_path()."/app/public/" . $name;
             $pathThumb = storage_path()."/app/public/" . $nameThumb;
 
-            // dd($path);
-
             Image::make($request->file('file'))
                 ->resize(1200, null, function ($constraint) {
                 $constraint->aspectRatio();

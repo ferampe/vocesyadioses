@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 mt-8">
+<div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 mt-8 flex-grow">
 
     <div class="map mx-auto md:mx-auto sm:mx-auto">
     
@@ -77,8 +77,12 @@
         <h1 id="name_region" class="text-2xl font-bold uppercase mb-2"></h1>
 
         <div class="font-light text-base" id="list">
-            <p class="align-items-center">Seleccione algun departament del peru.</p>
+            
         </div>
+
+        <p class="align-items-center" id="mensaje">
+            En este mapa podemos encontrar los lugares donde fallecieron las víctimas de Covid-19, visibilizando las zonas más afectadas por el virus en el país.
+        </p>
     </div>
 </div>
 
@@ -143,7 +147,7 @@ $( function() {
                 departamento: departamento
             },
             success: function(data){
-
+                $("#mensaje").hide();
                 $( "#list" ).empty();
                 $.each(data.users, function(index, item){
                     console.log(item);

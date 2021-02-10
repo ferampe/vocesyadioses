@@ -81,7 +81,7 @@
 </head>
 <body>
 
-<div class="container mx-auto">
+<div class="container mx-auto flex flex-col h-screen">
 
     <nav class="flex justify-between items-start mt-2 w-full">
         
@@ -110,12 +110,26 @@
     @endphp
 
     {{-- <ul class="flex w-full mt-5 mb-5 uppercase"> --}}
+        <div>
         {!! $items !!}
+    </div>
     {{-- </ul> --}}
 
     @yield('content')
+    
+
+
+    <footer class="text-sm text-center mt-5">
+        ******** <br>
+        Voces y adioses es una iniciativa realizada por Natalí Durand, Jesús Martínez y Eliana Otta. El diseño web ha sido hecho por Natalia Revilla y la programación por Fernando Ramos.
+    </footer>
 
 </div>
+
+
+
+
+
     
 
 <script src="{{ asset('js/app.js') }}"></script>

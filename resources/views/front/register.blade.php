@@ -3,13 +3,22 @@
 @section('content')
 
 
-<div class="font-sans antialiased bg-grey-lightest">
+<div class="font-sans antialiased bg-grey-lightest flex-grow">
+
+    
     
     <!-- Content -->
     <div class="w-full bg-grey-lightest" >
       <div class="container mx-auto py-8">
         <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
-              <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Registro</div>
+              <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Participar</div>
+
+              <div class="p-5 text-justify">
+                <p>Aquí puedes crear un usuario con el cual subir imágenes, textos, audio y video para conmemorar a un ser querido fallecido por Covid-19 en el Perú.</p> 
+                <p>Por favor, sigue las indicaciones de uso para garantizar el buen funcionamiento de la página y asegúrate de compartir material respetuoso y acorde al delicado período que vivimos. </p>
+                <p>Si se trata de una familia o varios amigos recordando juntos a alguien, por favor háganlo colectivamente mediante un solo usuario, para dejar espacio a otras personas que quieran hacer uso de la plataforma. Una vez subidos, los contenidos pueden ser cambiados cuantas veces se desee con el usuario creado.</p>
+            </div>
+
                 <div class="py-4 px-8">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -67,7 +76,7 @@
                         </div>
 
                         <div class="mb-4">
-                                <label class="block text-grey-darker text-sm  mb-1" for="department_id">Departamento de la persona fallecida</label>
+                                <label class="block text-grey-darker text-sm  mb-1" for="department_id">Lugar del deceso:</label>
                                 <select name="department_id" id="department_id" class="appearance-none border border-gray-300 rounded w-full py-1 px-3 text-grey-darker">
                                     <option value="">Seleccione un departamento</option>
 

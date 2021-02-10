@@ -4,7 +4,7 @@
 @section('content')
 
 @if($user)
-<div>
+<div class="flex-grow">
     <div class="text-4xl">{{ $user->name_victim }} {{ $user->last_name_victim}}</div>
 
 

@@ -11,9 +11,8 @@
                 <div class="card-body">
                     
                     
-                    <h2>{{ Auth::user()->name }}</h2>
+                    <h2>{{ Auth::user()->name_victim }} {{ Auth::user()->last_name_victim }} <br> <small>Departamento: {{ Auth::user()->department->name }}</small></h2>
                     Email : {{ Auth::user()->email }} <br>
-                    Departamento: {{ Auth::user()->department->name}} <br>
                     
                 </div>
 

@@ -4,7 +4,7 @@
 @section('content')
 
 
-<div class="row mt-5">
+<div class="mt-5 flex-grow">
     <div class="col" style="max-height: 100vh;">
 
         <article class="text-justify mt-10 lg:mt-40 xl:mt-40">
