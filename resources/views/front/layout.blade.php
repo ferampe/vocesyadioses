@@ -118,11 +118,12 @@
     @yield('content')
     
 
-
+    @if( request()->is('info'))
     <footer class="text-sm text-center mt-5">
         ******** <br>
         Voces y adioses es una iniciativa realizada por Natalí Durand, Jesús Martínez y Eliana Otta. El diseño web ha sido hecho por Natalia Revilla y la programación por Fernando Ramos.
     </footer>
+    @endif
 
 </div>
 

@@ -58,6 +58,33 @@
                     </button>
                     <hr>
 
+                    <div class="row">
+                        <div class="col">
+                            @if (Session::has('has_video'))
+
+                                <div class="alert alert-danger" role="alert">
+                                    {!! Session::get('has_video') !!}
+                                </div>
+
+                                
+                            @endif
+
+                            @if (Session::has('has_audio'))
+
+                                <div class="alert alert-danger" role="alert">
+                                    {!! Session::get('has_audio') !!}
+                                </div>
+                            @endif
+
+                            @if (Session::has('has_3_images'))
+
+                                <div class="alert alert-danger" role="alert">
+                                    {!! Session::get('has_3_images') !!}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="mt-5">
                         @foreach ($files as $file)
                             @if($file->mimetype == 'image/png' || $file->mimetype == 'image/jpg' || $file->mimetype == 'image/jpeg')

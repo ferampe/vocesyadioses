@@ -51,7 +51,7 @@
 
             @if($file->mimetype == 'video/mp4')
 
-                    <div style="position:absolute; padding:5px; background-color: black" class="draggable border-3 border-black" data-type="video" >
+                    <div style="position:absolute; padding:5px; background-color: black" class="draggable " data-type="video" >
                         <video controls >
                             <source src="{{$file->url}}" type="video/mp4">
                             
@@ -63,7 +63,7 @@
 
                 @if($file->mimetype == "image/png" || $file->mimetype == "image/jpg" || $file->mimetype == "image/jpeg")
                     <div style="position:absolute;" class="draggable" data-type="imagen">
-                        <img src="{{asset($file->url)}}" style="position: relative;" class="border-2 border-black">
+                        <img src="{{asset($file->url)}}" style="position: relative;" class="">
                     </div>
                 @endif
 

@@ -12,9 +12,12 @@ use Intervention\Image\Facades\Image;
 
 class FileController extends Controller
 {
+
     
     public function store(Request $request)
     {
+
+
         $request->validate([
             'file' => 'required'
         ]);
@@ -23,6 +26,37 @@ class FileController extends Controller
 
         if(in_array($request->file('file')->getMimeType(), $mimeImage))
         {
+
+            /**
+             * Validar si hay mas de 3 imagenes
+             */
+            $files = File::where('user_id', Auth::user()->id)->get();
+
+            $grouped = $files->groupBy('mimetype')->all();
+
+            if(isset($grouped['image/jpeg']))
+            {
+                if( count($grouped['image/jpeg']) >= 3 )
+                {
+                    return redirect()->back()->with('has_3_images', 'Solo se pueden subir 3 imagenes, puede eliminar imagenes para subir otras');
+                }
+            }
+
+         
+
+            // if( array_key_exists($request->file('file')->getMimeType(), $grouped) )
+            // {
+            //     return redirect()->back()->with('has_video', 'Ya existe un video, puede eliminar y subir otro video');
+            // }
+
+            // if( array_key_exists($request->file('file')->getMimeType(), $grouped) )
+            // {
+            //     return redirect()->back()->with('has_audio', 'Ya existe un audio, puede eliminar y subir otro video');
+            // }
+
+            /** */
+
+
             $ramdon = Str::random(10);
 
             $name = $ramdon . $request->file('file')->getClientOriginalName();
@@ -50,7 +84,24 @@ class FileController extends Controller
             ]);
         }else{
 
-            // $name = Str::random(10) . $request->file('file')->getClientOriginalName();
+            /**
+             * Validar si a existe video o audio
+             */
+            $files = File::where('user_id', Auth::user()->id)->get();
+
+            $grouped = $files->groupBy('mimetype')->all();
+
+            if( array_key_exists($request->file('file')->getMimeType(), $grouped) )
+            {
+                return redirect()->back()->with('has_video', 'Ya existe un video, puede eliminar y subir otro video');
+            }
+
+            if( array_key_exists($request->file('file')->getMimeType(), $grouped) )
+            {
+                return redirect()->back()->with('has_audio', 'Ya existe un audio, puede eliminar y subir otro video');
+            }
+
+            /** */
 
             $imagenes = $request->file('file')->store('public');
 
