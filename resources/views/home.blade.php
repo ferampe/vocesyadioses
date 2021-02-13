@@ -61,16 +61,12 @@
                     <div class="row">
                         <div class="col">
                             @if (Session::has('has_video'))
-
                                 <div class="alert alert-danger" role="alert">
                                     {!! Session::get('has_video') !!}
                                 </div>
-
-                                
                             @endif
 
                             @if (Session::has('has_audio'))
-
                                 <div class="alert alert-danger" role="alert">
                                     {!! Session::get('has_audio') !!}
                                 </div>
