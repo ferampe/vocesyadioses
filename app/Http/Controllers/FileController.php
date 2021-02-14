@@ -18,6 +18,9 @@ class FileController extends Controller
     {
 
 
+        // dd($request->file('file')->getMimeType());
+        //video/quicktime
+
         $request->validate([
             'file' => 'required'
         ]);

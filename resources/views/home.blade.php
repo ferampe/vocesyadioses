@@ -106,7 +106,7 @@
                             @endif
 
 
-                            @if($file->mimetype == 'video/mp4')
+                            @if($file->mimetype == 'video/mp4' || $file->mimetype == 'video/quicktime')
 
                             <figure class="figure">
                                 <video width="200" height="" controls>

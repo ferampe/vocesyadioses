@@ -49,7 +49,7 @@
 
             @foreach($user->files as $file)
 
-            @if($file->mimetype == 'video/mp4')
+            @if($file->mimetype == 'video/mp4' || $file->mimetype =='video/quicktime')
 
                     <div style="position:absolute; padding:5px; background-color: black" class="draggable " data-type="video" >
                         <video controls >

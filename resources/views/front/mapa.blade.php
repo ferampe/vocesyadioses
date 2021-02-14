@@ -80,6 +80,9 @@
             
         </div>
 
+        <img src="{{ asset('imagenes/loading.gif') }}" width="100px" id="loading">
+
+
         <p class="align-items-center" id="mensaje">
             En este mapa podemos encontrar los lugares donde fallecieron las víctimas de Covid-19, visibilizando las zonas más afectadas por el virus en el país.
         </p>
@@ -109,6 +112,7 @@
 
 $( function() {
 
+    $('#loading').hide();
 
     let nameRegion = document.getElementById('name_region');
     let paths = document.getElementsByClassName('elpath');
@@ -137,6 +141,8 @@ $( function() {
     function searchDepartment(departamento)
     {
 
+        $('#loading').show();
+
         $.ajax({
             url: '{{ route('victimas_departamento') }}',
             method: 'POST',
@@ -154,6 +160,8 @@ $( function() {
 
                     $('#list').append('<a href="{{ url('victim')}}/ '+item.id+'"">'+item.last_name_victim+ " " +item.name_victim+'</a><br/>');
                 })
+
+                $('#loading').hide();
                 
                 // console.log(data);
 
