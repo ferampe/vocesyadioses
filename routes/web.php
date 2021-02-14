@@ -20,13 +20,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::group(['middleware' => ['auth']], function() {
     Route::get('register/edit/{user_id}', 'Auth\RegisterController@edit');
     Route::put('register/{user_id}', 'Auth\RegisterController@update')->name('register.user');
 
+    Route::get('delete/{id}', function($id){
 
+        if(Auth::user()->admin == 1)
+        {
+            if(Auth::user()->id != $id){
+                App\File::where('user_id', $id)->delete();
+                App\User::destroy($id);
+                
+            }
+            
+        }
+
+        return redirect('/');
+        
+
+    })->name('delete');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -70,11 +83,11 @@ Route::get('create', function(){
 
 
     $faker = Faker::create();
-    	foreach (range(1,50) as $index) {
+    	foreach (range(1,20) as $index) {
 	        \DB::table('users')->insert([
 	            'name' => $faker->name,
                 'email' => $faker->email,
-                'department_id' => 4,
+                'department_id' => 14,
                 'name_victim' => $faker->firstName,
                 'last_name_victim' => $faker->lastName,
 	            'password' => bcrypt('secret'),

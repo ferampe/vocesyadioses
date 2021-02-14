@@ -99,6 +99,13 @@
             <a href="{{ url('mapa') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('mapa')) ? 'underline' : '' }}">mapa</a>
             <a href="{{ route('register') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('register')) ? 'underline' : '' }}">participar</a>
             <a href="{{ route('login') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('login')) ? 'underline' : '' }}">login</a>
+            @if(isset($user))
+            @if(isset(Auth::user()->admin ))
+                @if(Auth::user()->admin == 1)
+                <a href="{{ route('delete', [$user->id]) }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark bg-red-300 text-red-800">ELIMINAR</a>
+                @endif
+            @endif
+            @endif
 
           </div>
         </div>
