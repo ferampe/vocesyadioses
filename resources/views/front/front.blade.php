@@ -4,7 +4,7 @@
 @section('content')
 
 @if($user)
-<div class="flex-grow">
+<div class="flex-grow mt-5">
     <div class="text-4xl">{{ $user->name_victim }} {{ $user->last_name_victim}}</div>
 
 
@@ -101,20 +101,11 @@
 
 @section('js')
 
-{{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --}}
-
-
-
-    {{-- // $( function() {
-    //     // $( ".draggable" ).draggable({ containment: "#containment-wrapper"});
-    // } ); --}}
-
     <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
 
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
 
     <script>
         $( document ).ready(function() {

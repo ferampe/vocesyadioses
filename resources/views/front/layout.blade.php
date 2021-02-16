@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> --}}
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,800;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,800;1,700&display=swap" rel="stylesheet">
 
 
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -81,11 +81,15 @@
 </head>
 <body>
 
-<div class="container mx-auto flex flex-col h-screen">
+<div class="container mx-auto flex flex-col">
 
     <nav class="flex justify-between items-start mt-2 w-full">
         
-        <div id="title" class="py-2 text-4xl font-semibold"> <a href="{{ url("/") }}"> voces-y-adioses <small class="text-lg font-light block">Ensayando despedidas en tiempos de COVID</small></a></div>
+        <div id="title" class="py-5  text-4xl font-semibold">
+            <a href="{{ url("/") }}" class="uppercase"> Voces y adioses 
+                <small class="text-lg font-semibold mt-2 block lowercase">Ensayando despedidas en tiempos de <span class="uppercase">COVID</span></small>
+            </a>
+        </div>
 
         <div class="flex flex-no-shrink items-stretch h-12 ">
           <button id="boton" class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-2">
@@ -98,13 +102,13 @@
             <a href="{{ url('info') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('info')) ? 'underline' : '' }}">¿qué es?</a>
             <a href="{{ url('mapa') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('mapa')) ? 'underline' : '' }}">mapa</a>
             <a href="{{ route('register') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('register')) ? 'underline' : '' }}">participar</a>
-            <a href="{{ route('login') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('login')) ? 'underline' : '' }}">login</a>
+            <a href="{{ route('login') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark {{ (request()->is('login')) ? 'underline' : '' }}">ingresar</a>
             @if(isset($user))
-            @if(isset(Auth::user()->admin ))
-                @if(Auth::user()->admin == 1)
-                <a href="{{ route('delete', [$user->id]) }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark bg-red-300 text-red-800">ELIMINAR</a>
+                @if(isset(Auth::user()->admin ))
+                    @if(Auth::user()->admin == 1)
+                    <a href="{{ route('delete', [$user->id]) }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal  flex items-center hover:bg-grey-dark bg-red-300 text-red-800">ELIMINAR</a>
+                    @endif
                 @endif
-            @endif
             @endif
 
           </div>
@@ -117,7 +121,7 @@
     @endphp
 
     {{-- <ul class="flex w-full mt-5 mb-5 uppercase"> --}}
-        <div>
+    <div class="my-2">
         {!! $items !!}
     </div>
     {{-- </ul> --}}
@@ -125,12 +129,7 @@
     @yield('content')
     
 
-    @if( request()->is('info'))
-    <footer class="text-sm text-center mt-5">
-        ******** <br>
-        Voces y adioses es una iniciativa realizada por Natalí Durand, Jesús Martínez y Eliana Otta. El diseño web ha sido hecho por Natalia Revilla y la programación por Fernando Ramos.
-    </footer>
-    @endif
+    
 
 </div>
 
