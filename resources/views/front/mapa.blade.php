@@ -74,9 +74,9 @@
         
 
     <div class="">
-        <h1 id="name_region" class="text-2xl font-bold uppercase mb-2"></h1>
+        <h1 id="name_region" class="text-2xl font-bold mt-5 xl:mt-0 lg:mt-0 text-center pb-10 xl:pb-2 lg:pb-2 text-center xl:text-left lg:text-left uppercase mb-2"></h1>
 
-        <div class="font-light text-base" id="list">
+        <div class="font-light text-base pb-5" id="list">
             
         </div>
 
