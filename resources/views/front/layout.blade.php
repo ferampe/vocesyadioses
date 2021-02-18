@@ -81,13 +81,13 @@
 </head>
 <body>
 
-<div class="container mx-auto flex flex-col">
+<div class="container mx-auto px-5">
 
     <nav class="flex justify-between items-start mt-2 w-full">
         
         <div id="title" class="py-5  text-4xl font-semibold">
-            <a href="{{ url("/") }}" class="uppercase"> Voces y adioses 
-                <small class="text-lg font-semibold mt-2 block lowercase">Ensayando despedidas en tiempos de <span class="uppercase">COVID</span></small>
+            <a href="{{ url("/") }}" class=""> Voces y Adioses 
+                <small class="text-lg font-semibold mt-2 block">Ensayando despedidas en tiempos de <span class="uppercase">COVID</span></small>
             </a>
         </div>
 
