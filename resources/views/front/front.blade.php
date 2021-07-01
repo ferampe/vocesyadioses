@@ -176,10 +176,14 @@
                 $divWidth  = $holder.width();
                 $divHeight = $holder.height();
 
+
+
                 $(this).css({
                     'left' : Math.floor(Math.random()*(500-10) + 10),
                     'top' : Math.floor( Math.random()*(20-10) + 10)
                 });    
+
+                console.log(Math.floor( Math.random()*(20-10) + 10));
                 
 
             })
